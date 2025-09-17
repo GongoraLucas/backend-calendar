@@ -1,0 +1,37 @@
+### Crear un evento 
+
+POST http://127.0.0.1:4001/api/calendar/
+Content-Type: application/json
+x-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGNiMGI0MDVhMjM3ZmVmMGI5ODE3YWUiLCJuYW1lIjoiUGFibG8gR29uZ29yYSIsImlhdCI6MTc1ODEzNzIwNiwiZXhwIjoxNzU4MTQ0NDA2fQ.MbNn06nNMtBFVoazFYdBnQVeVCp-RJxrf-eZxg4mFz0
+
+{
+    "title":"Primer evento como pablo",
+    "notes":"Primera nota como pablo",
+    "start": 10,
+    "end":100
+}
+
+### Obtener todos los eventos
+
+GET http://localhost:4001/api/calendar/events
+x-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGNiMGI0MDVhMjM3ZmVmMGI5ODE3YWUiLCJuYW1lIjoiUGFibG8gR29uZ29yYSIsImlhdCI6MTc1ODEzNzIwNiwiZXhwIjoxNzU4MTQ0NDA2fQ.MbNn06nNMtBFVoazFYdBnQVeVCp-RJxrf-eZxg4mFz0
+
+### Actualizar un evento
+
+PUT http://localhost:4001/api/calendar/events/68cb0d0e5c13a4e9f057dea6
+Content-Type: application/json
+x-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGNiMGI0MDVhMjM3ZmVmMGI5ODE3YWUiLCJuYW1lIjoiUGFibG8gR29uZ29yYSIsImlhdCI6MTc1ODEzNzIwNiwiZXhwIjoxNzU4MTQ0NDA2fQ.MbNn06nNMtBFVoazFYdBnQVeVCp-RJxrf-eZxg4mFz0
+
+{
+    "title":"Modificacion evento como pablooooo",
+    "notes":"Modificacion nota como pablo",
+    "start":100000,
+    "end": 10000000000
+}
+
+### Eliminar una nota
+
+DELETE  http://localhost:4001/api/calendar/events/68cb0d0e5c13a4e9f057dea6
+x-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGNiMGI0MDVhMjM3ZmVmMGI5ODE3YWUiLCJuYW1lIjoiUGFibG8gR29uZ29yYSIsImlhdCI6MTc1ODEzNzIwNiwiZXhwIjoxNzU4MTQ0NDA2fQ.MbNn06nNMtBFVoazFYdBnQVeVCp-RJxrf-eZxg4mFz0
+
+
