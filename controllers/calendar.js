@@ -13,7 +13,7 @@ const getEvents = async (req, res = response) => {
     console.log(error);
     res.status(500).json({
       ok: false,
-      errors: "No se pudo traer los eventos de la base de datos",
+      errors: {db:"No se pudo traer los eventos de la base de datos"},
     });
   }
 };
@@ -25,7 +25,7 @@ const createEvent = async (req, res = response) => {
     if (req.body.end < req.body.start) {
       return res.status(400).json({
         ok: false,
-        errors: "La fecha inicial  debe ser menor que la fecha final",
+        errors: {event: "La fecha inicial  debe ser menor que la fecha final"},
       });
     }
 
@@ -44,7 +44,7 @@ const createEvent = async (req, res = response) => {
     console.log(error);
     res.status(500).json({
       ok: false,
-      errors: "No se pudo crear el evento",
+      errors: {event:"No se pudo crear el evento"},
     });
   }
 };
@@ -56,7 +56,7 @@ const updateEvent = async (req, res = response) => {
     if (req.body.end < req.body.start) {
       return res.status(400).json({
         ok: false,
-        errors: "La fecha inicial  debe ser menor que la fecha final",
+        errors: {event:"La fecha inicial  debe ser menor que la fecha final"},
       });
     }
 
@@ -65,14 +65,14 @@ const updateEvent = async (req, res = response) => {
     if (!event) {
       return res.status(404).json({
         ok: false,
-        errors: `El evento con id ${eventId} no existe`,
+        errors: {event:`El evento con id ${eventId} no existe`},
       });
     }
 
     if (event.user.toString() !== uid) {
       return res.status(401).json({
         ok: false,
-        errors: "No tiene permiso para editar este evento",
+        errors: {event:"No tiene permiso para editar este evento"},
       });
     }
 
@@ -92,7 +92,7 @@ const updateEvent = async (req, res = response) => {
 
     res.status(500).json({
       ok: false,
-      errors: "No se pudo actualizar el evento",
+      errors: {event:"No se pudo actualizar el evento"},
     });
   }
 };
@@ -106,14 +106,14 @@ const deleteEvent = async (req, res = response) => {
     if (!event) {
       return res.status(404).json({
         ok: false,
-        errors: `El evento con id ${eventId} no existe`,
+        errors: {event:`El evento con id ${eventId} no existe`},
       });
     }
 
     if (event.user.toString() !== uid) {
       return res.status(401).json({
         ok: false,
-        errors: "No tiene permiso para eliminar este evento",
+        errors: {privileg:"No tiene permiso para eliminar este evento"},
       });
     }
 
@@ -128,7 +128,7 @@ const deleteEvent = async (req, res = response) => {
     console.log(error);
     res.status(500).json({
       ok: false,
-      errors: "No se pudo eliminar el evento",
+      errors: { event:"No se pudo eliminar el evento"},
     });
   }
 };

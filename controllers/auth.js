@@ -13,7 +13,10 @@ const login = async (req,res=response)=>{
         if (!user){
             return res.status(400).json({
                 ok:false,
-                error: `El correo es incorrecto` 
+                errors: {
+                    email:`El correo es incorrecto` 
+                }
+                    
             })
         }
         
@@ -22,7 +25,9 @@ const login = async (req,res=response)=>{
         if (!verifyPassword){
               return res.status(400).json({
                 ok:false,
-                errors: `La contraseña es incorrecta` 
+                errors: {
+                    password: `La contraseña es incorrecta` 
+                }
             })
 
         }
@@ -43,7 +48,9 @@ const login = async (req,res=response)=>{
         console.log(error)
         return res.status(500).json({
             ok:false,
-            errors:"Error en el servidor"
+            errors:{
+                server:"Error en el servidor"
+            }
         })
     }
 
@@ -84,7 +91,9 @@ const register = async (req,res=response)=>{
         console.log(error)
         return res.status(500).json({
             ok:false,
-            errors:"Error en el servidor"
+            errors:{
+                server:"Error en el servidor"
+            }
         })
     }
 
@@ -107,7 +116,9 @@ const refreshToken = async (req,res=response)=>{
         console.log(error)
         return res.status(500).json({
             ok:false,
-            errors:"No se pudo renovar token"
+            errors:{
+                server:"No se pudo renovar token"
+            }
         })
     }
 
