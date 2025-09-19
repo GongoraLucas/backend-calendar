@@ -65,7 +65,7 @@ const register = async (req,res=response)=>{
         if (user){
             return res.status(400).json({
                 ok:false,
-                message: `El usuario con correo ${req.body.email} ya existe` 
+                errors: {auth:`El usuario con correo ${req.body.email} ya existe`} 
             })
         }
         const salto = genSaltSync()
