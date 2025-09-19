@@ -100,6 +100,7 @@ const refreshToken = async (req,res=response)=>{
         return res.status(200).json({
             ok:false,
             message:"El token ha sido renovado",
+            user:{uid,name},
             token
         })
     }catch(error){
