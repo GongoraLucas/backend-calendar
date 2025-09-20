@@ -3,7 +3,7 @@ const Event = require("../models/Event");
 
 const getEvents = async (req, res = response) => {
   try {
-    const events = await Event.find();
+    const events = await Event.find().populate("user","name ");
     res.status(200).json({
       ok: true,
       message: "Eventos obtenidos satisfactoriamente",
@@ -34,6 +34,7 @@ const createEvent = async (req, res = response) => {
     const event = new Event(req.body);
 
     await event.save();
+
 
     res.status(201).json({
       ok: true,
@@ -68,15 +69,16 @@ const updateEvent = async (req, res = response) => {
         errors: {event:`El evento con id ${eventId} no existe`},
       });
     }
-
+    
     if (event.user.toString() !== uid) {
+  
       return res.status(401).json({
         ok: false,
         errors: {event:"No tiene permiso para editar este evento"},
       });
     }
 
-    req.body.user = event.user.toString();
+    req.body.user = event.user._id.toString();
 
     eventUpdated = await Event.findByIdAndUpdate(eventId, req.body, {
       new: true,

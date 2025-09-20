@@ -1,4 +1,5 @@
 require("dotenv").config();
+const path = require("path")
 const express = require("express");
 const { connectDB } = require("./config/database");
 const cors = require("cors")
@@ -11,6 +12,10 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use("/api/auth",require("./routes/auth"))
 app.use("/api/calendar",require("./routes/calendar"))
+
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 const upServer = async () => {
   try {
